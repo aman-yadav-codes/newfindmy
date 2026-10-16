@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
-import { GridBackground } from "@/components/shared/GridBackground";
+import { AuroraBackground } from "@/components/shared/AuroraBackground";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -15,38 +15,26 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://glass-ui.crenspire.com"),
-  title: "Glass UI - Component Library | Apple-Inspired Liquid Glassmorphism",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://newfindmy.local"),
+  title: "FindMy | Discover the Best of South Africa",
   description:
-    "A modern, high-performance glassmorphic component library inspired by Apple's design language, built with Next.js 16, React 19, Radix UI primitives, and Tailwind CSS v4.",
-  keywords: [
-    "glassmorphism",
-    "glass ui",
-    "next.js 16",
-    "react 19",
-    "tailwind css v4",
-    "apple design",
-    "liquid glass",
-    "radix ui",
-    "components",
-  ],
-  authors: [{ name: "Crenspire Technologies" }],
+    "Discover the best of South Africa with FindMy. Explore local food, travel, services, property, events and cars with a natural search experience.",
+  keywords: ["South Africa", "local discovery", "food", "travel", "services", "property", "events", "cars"],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Glass UI - Component Library | Liquid Glassmorphism",
-    description:
-      "A modern, high-performance glassmorphic component library inspired by Apple's design language, built with Next.js 16 and React 19.",
-    url: "https://glass-ui.crenspire.com",
-    siteName: "Glass UI",
-    locale: "en_US",
+    title: "FindMy | Discover the Best of South Africa",
+    description: "Explore local food, travel, services, property, events and cars across South Africa.",
+    url: "/",
+    siteName: "FindMy",
+    locale: "en_ZA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Glass UI - Component Library",
-    description: "Apple-inspired liquid glassmorphic components for React 19 and Next.js 16.",
+    title: "FindMy | Discover South Africa",
+    description: "Find local places, services and experiences across South Africa.",
   },
   robots: {
     index: true,
@@ -80,7 +68,7 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <GridBackground />
+          <AuroraBackground />
           <Header />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />

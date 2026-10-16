@@ -18,6 +18,8 @@ The Header must be a **Server Component shell** (`zero JS`). All interactivity i
 ## 2. Below-Fold Interactive Sections
 Any component that uses `Tabs`, `Dialog`, `Select`, `Accordion`, or other Radix primitives and is placed **below the first viewport** must be lazy-loaded.
 
+For every page, load below-the-fold images with native/Next image lazy loading so they are requested near the viewport, and supply fixed dimensions or an aspect ratio. Do not lazy-load the hero/LCP image or other content needed immediately. Keep meaningful text in server-rendered HTML. Defer only noncritical interactive JavaScript, with a stable placeholder when its layout space is needed. Confirm behavior and loading in a production build; do not assume viewport deferral improves a metric without measuring it.
+
 **Pattern**: Create a `"use client"` wrapper file to hold `ssr: false` dynamic calls, since `ssr: false` cannot be used directly in RSC pages.
 - `LazyInteractiveSections.tsx`: `"use client"` wrapper with `dynamic({ ssr: false })` imports
 - `InteractiveVariantsSection.tsx`: actual component (lazy-loaded)

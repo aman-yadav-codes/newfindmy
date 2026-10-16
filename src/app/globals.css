@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+.findmy-aurora {
+  background-color: #071a2b;
+  background-image:
+    radial-gradient(ellipse 28% 49% at 0% 43%, rgba(160, 90, 55, 0.58), transparent 78%),
+    radial-gradient(ellipse 30% 45% at 100% 85%, rgba(160, 90, 55, 0.46), transparent 78%),
+    radial-gradient(ellipse 68% 80% at 50% 43%, rgba(33, 96, 124, 0.52), transparent 76%),
+    linear-gradient(180deg, #071a2b 0%, #123d54 45%, #071a2b 100%);
+}
+
 /* Performance: reduce backdrop-filter cost on mobile where GPU compositor
    is constrained. Use a simpler blur value to halve rasterization time. */
 @media (max-width: 767px) {

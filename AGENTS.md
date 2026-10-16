@@ -14,6 +14,10 @@ This file is the shared, always-loaded entry point for Codex and Antigravity. Be
 
 For TypeScript and React work, use specific named imports and explicit `import type` for type-only symbols; avoid namespace imports. Use `next/link` for internal routes. Keep client bundles small and check the installed Next.js documentation before using rendering or bundling APIs.
 
+For every page, load only what the current viewport needs first. Eagerly load the LCP image, essential text, and immediately usable controls; lazy-load below-the-fold images and noncritical interactive code as they approach the viewport. Reserve media space to prevent layout shifts, keep meaningful page content server rendered, and verify the result in a production build. See `.agents/rules/performance-and-tbt.md` for the detailed rule.
+
+Auth controls must follow a real session: show **Sign In** to signed-out visitors, and show the account menu plus a working **Sign Out** only when authenticated. Never render a hard-coded user, fake notification counts, or a Sign Out action that only closes a menu. Keep permission checks on the server when authenticated routes and RBAC are added.
+
 ## Route to the right guidance
 
 | Work | Required guidance |

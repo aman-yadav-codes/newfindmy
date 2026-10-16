@@ -4,13 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import {
   Grid2X2,
-  Heart,
-  Bell,
   MapPin,
   ChevronDown,
-  User,
-  Settings,
-  LogOut,
 } from "lucide-react"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { ModeToggle } from "@/components/ui/mode-toggle"
@@ -72,55 +67,9 @@ export function MobileSheet({
             </div>
           </div>
 
-          {/* ───────────────── User Mini Profile ───────────────── */}
-          <div className="flex items-center gap-3 p-3 rounded-2xl glass-frosted border border-[var(--glass-border)]">
-            <div className="h-10 w-10 rounded-full flex items-center justify-center bg-gradient-to-tr from-slate-400 to-slate-500 text-white font-bold text-sm shrink-0 shadow-sm">
-              A
-            </div>
-            <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-sm font-semibold text-foreground truncate">
-                Alex Morgan
-              </span>
-              <span className="text-xs text-muted-foreground truncate">
-                alex@findmy.local
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-white/5 px-2 py-1 rounded-full border border-white/10">
-              <MapPin className="h-3 w-3" />
-              <span className="truncate max-w-[70px]">{currentLocation.split(",")[0]}</span>
-            </div>
-          </div>
-
-          {/* ───────────────── Quick Action Chips ───────────────── */}
-          <div className="grid grid-cols-2 gap-2">
-            <Link
-              href="#favourites"
-              prefetch={false}
-              onClick={() => onOpenChange(false)}
-              className="flex items-center justify-between p-2.5 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-white/10 transition-colors"
-            >
-              <div className="flex items-center gap-2">
-                <Heart className="h-4 w-4 text-rose-500 fill-rose-500" />
-                <span className="text-xs font-semibold text-foreground">Saved</span>
-              </div>
-              <span className="h-4 min-w-[16px] px-1 bg-red-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                1
-              </span>
-            </Link>
-            <Link
-              href="#notifications"
-              prefetch={false}
-              onClick={() => onOpenChange(false)}
-              className="flex items-center justify-between p-2.5 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-white/10 transition-colors"
-            >
-              <div className="flex items-center gap-2">
-                <Bell className="h-4 w-4 text-orange-500" />
-                <span className="text-xs font-semibold text-foreground">Alerts</span>
-              </div>
-              <span className="h-4 min-w-[16px] px-1 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                2
-              </span>
-            </Link>
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] p-3 text-sm">
+            <span className="flex items-center gap-2 text-muted-foreground"><MapPin aria-hidden="true" className="size-4" />{currentLocation.split(",")[0]}</span>
+            <button type="button" disabled title="Sign-in is not connected yet" className="rounded-full border border-[var(--glass-border)] px-4 py-2 font-semibold text-foreground opacity-70">Sign In</button>
           </div>
 
           {/* ───────────────── Add Listing Expandable ───────────────── */}
@@ -223,35 +172,6 @@ export function MobileSheet({
             })}
           </nav>
 
-          {/* ───────────────── Footer Links ───────────────── */}
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
-            <Link
-              href="#profile"
-              prefetch={false}
-              onClick={() => onOpenChange(false)}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-foreground hover:bg-white/10 transition-colors"
-            >
-              <User className="h-4 w-4 text-muted-foreground" />
-              Account Settings
-            </Link>
-            <Link
-              href="#settings"
-              prefetch={false}
-              onClick={() => onOpenChange(false)}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-foreground hover:bg-white/10 transition-colors"
-            >
-              <Settings className="h-4 w-4 text-muted-foreground" />
-              Preferences
-            </Link>
-            <button
-              type="button"
-              onClick={() => onOpenChange(false)}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-red-500 hover:bg-red-500/10 transition-colors w-full text-left"
-            >
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </button>
-          </div>
         </div>
       </SheetContent>
     </Sheet>

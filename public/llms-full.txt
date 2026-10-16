@@ -1,26 +1,20 @@
-# Crenspire Glass UI - Complete Technical Specification
+# FindMy homepage
 
-> Comprehensive technical documentation for autonomous agents, crawlers, and AI-assisted workflows.
+FindMy presents a local discovery experience for South Africa. The homepage introduces food, travel, services, property, events, cars, and insurance. It also shows sample trending listings, handpicked collections, platform information, FAQs, and business information.
 
-## Architecture
-- **Framework**: Next.js 16 App Router (Turbopack, Server Components by default, React 19).
-- **Styling**: Tailwind CSS v4, PostCSS, CSS variables, OKLCH color spaces.
-- **Components**: Radix UI headless primitives wrapped with Apple liquid glass styling.
-- **Glass Variants**:
-  - `glass`: Base translucent acrylic with specular top border lighting and backdrop blur.
-  - `frosted`: Denser, soft light scattering blur with elevated opacity.
-  - `fluted`: Vertical striated glass effect with directional lighting.
-  - `crystal`: High-refraction, ultra-crisp edge highlights with high transparency.
+## Current routes
+- `/` — homepage
+- `/robots.txt` — crawler instructions
+- `/sitemap.xml` — route index
+- `/llms.txt` — concise agent guide
 
-## Component Registry
-Available via `npx shadcn@latest add @glass-ui/<name>`:
-- Forms: Button, Input, Textarea, Label, Checkbox, Switch, RadioGroup, Select, ButtonGroup, InputGroup
-- Display: Card, Badge, Avatar, Alert, Skeleton, Separator, Table, Spinner, EmptyState
-- Overlays: Dialog, AlertDialog, Popover, Tooltip, HoverCard, Sheet, ContextMenu, Sonner (Toast)
-- Navigation: Tabs, Accordion, Breadcrumb, DropdownMenu, NavigationMenu, Pagination, ScrollArea, MenuBar
-- Interactive: Slider, Toggle, ToggleGroup, Carousel, ModeToggle
+## Interface
+- The search field matches a query to a category preview on the current page; it does not call a listings API.
+- The location selector changes the city shown in the current browser session only.
+- Trending cards are marked as sample listings for layout review.
+- FAQ answers open with native HTML disclosure elements.
+- Newsletter submission shows that the service is not yet connected and does not save an email address.
+- Account and business actions are visual previews until real services and authorization are integrated.
 
-## Performance & Accessibility Standards
-- Lighthouse 100/100 targets across Performance, Accessibility, Best Practices, and SEO.
-- Agentic Browsing: Full compliance with W3C HTML5 semantic landmarks (`<header>`, `<nav>`, `<main id="main-content">`, `<footer>`).
-- Zero forced reflows during hydration and compositor-only GPU transitions (`transform`, `opacity`).
+## Implementation
+The homepage is statically generated with Next.js App Router. The hero uses separate desktop and mobile WebP assets with eager loading. Images below the first viewport use lazy loading and reserved aspect ratios. Client-side code is limited to interactive controls.
