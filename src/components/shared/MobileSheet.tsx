@@ -124,11 +124,11 @@ export function MobileSheet({
           </div>
 
           {/* ───────────────── Add Listing Expandable ───────────────── */}
-          <div className="rounded-2xl border border-[var(--glass-border)] overflow-hidden bg-slate-900/40 dark:bg-slate-950/40">
+          <div className="rounded-2xl border border-slate-200/90 dark:border-white/10 overflow-hidden bg-slate-100/90 dark:bg-slate-900/60">
             <button
               type="button"
               onClick={() => setAddListingOpen((prev) => !prev)}
-              className="flex items-center justify-between w-full p-3.5 text-left font-semibold text-foreground hover:bg-white/5 transition-colors"
+              className="flex items-center justify-between w-full p-3.5 text-left font-semibold text-foreground hover:bg-slate-200/60 dark:hover:bg-white/5 transition-colors"
             >
               <div className="flex items-center gap-2.5">
                 <Grid2X2 className="h-4 w-4 text-orange-500" />
@@ -143,7 +143,7 @@ export function MobileSheet({
             </button>
 
             {addListingOpen && (
-              <div className="flex flex-col gap-1 p-2 pt-0 border-t border-white/10">
+              <div className="flex flex-col gap-1 p-2 pt-0 border-t border-slate-200 dark:border-white/10">
                 {addListingOptions.map((opt) => {
                   const Icon = opt.icon
                   return (
@@ -152,16 +152,16 @@ export function MobileSheet({
                       href={opt.href}
                       prefetch={false}
                       onClick={() => onOpenChange(false)}
-                      className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/10 transition-all text-left"
+                      className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-200/60 dark:hover:bg-white/10 transition-all text-left"
                     >
-                      <div className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center text-foreground shrink-0">
+                      <div className="h-8 w-8 rounded-full bg-slate-200/80 dark:bg-white/10 flex items-center justify-center text-slate-800 dark:text-white shrink-0">
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="flex flex-col min-w-0">
-                        <span className="text-xs font-semibold text-foreground truncate">
+                        <span className="text-xs font-semibold text-slate-900 dark:text-white truncate">
                           {opt.title}
                         </span>
-                        <span className="text-[10px] text-muted-foreground truncate">
+                        <span className="text-[10px] text-slate-600 dark:text-slate-300 truncate">
                           {opt.subtitle}
                         </span>
                       </div>

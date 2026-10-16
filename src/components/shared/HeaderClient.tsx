@@ -94,8 +94,8 @@ export function HeaderClient({
                 className={cn(
                   "flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-lg transition-all",
                   isOpen
-                    ? "text-foreground bg-white/10 dark:bg-white/10 shadow-sm"
-                    : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    ? "text-foreground bg-black/5 dark:bg-white/10 shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5"
                 )}
               >
                 <span>{cat.name}</span>
@@ -110,9 +110,9 @@ export function HeaderClient({
               {isOpen && (
                 <div
                   role="menu"
-                  className="absolute top-full left-0 mt-2 w-72 glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-border)] shadow-[var(--glass-shadow-lg)] rounded-2xl p-2 z-50 animate-in fade-in-0 zoom-in-95 duration-150"
+                  className="absolute top-full left-0 mt-2 w-72 rounded-2xl p-2.5 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-[var(--blur-frosted)] bg-white/92 dark:bg-slate-950/92 border border-black/10 dark:border-white/15 shadow-2xl shadow-slate-900/15 dark:shadow-black/70"
                 >
-                  <div className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <div className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     Explore {cat.name}
                   </div>
                   <div className="flex flex-col gap-1 mt-1">
@@ -123,12 +123,12 @@ export function HeaderClient({
                         prefetch={false}
                         role="menuitem"
                         onClick={closeDropdowns}
-                        className="flex flex-col p-2.5 rounded-xl transition-colors hover:bg-white/10 dark:hover:bg-white/10 text-left group"
+                        className="flex flex-col p-2.5 rounded-xl transition-colors hover:bg-slate-100/90 dark:hover:bg-white/10 text-left group"
                       >
-                        <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                        <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                           {sub.title}
                         </span>
-                        <span className="text-xs text-muted-foreground leading-tight">
+                        <span className="text-xs text-slate-600 dark:text-slate-300 leading-tight">
                           {sub.subtitle}
                         </span>
                       </Link>
@@ -143,7 +143,7 @@ export function HeaderClient({
 
       {/* ───────────────── Right Action Controls ───────────────── */}
       <div className="flex items-center gap-2 sm:gap-3 ml-auto">
-        {/* Add Listing Dropdown (Matching Screenshot 2 & 3) */}
+        {/* Add Listing Dropdown (Proper Frosted Surface & Theme-Aware Contrast) */}
         <div className="relative">
           <button
             type="button"
@@ -154,8 +154,8 @@ export function HeaderClient({
             className={cn(
               "flex items-center gap-2 h-9 px-3.5 sm:px-4 rounded-full border border-[var(--glass-border)] text-sm font-semibold transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]",
               activeDropdown === "add-listing"
-                ? "bg-white/20 dark:bg-white/20 text-foreground border-white/40"
-                : "bg-[var(--glass-bg)] hover:bg-white/10 dark:hover:bg-white/10 text-foreground"
+                ? "bg-slate-200/80 dark:bg-white/20 text-foreground border-slate-300 dark:border-white/40"
+                : "bg-[var(--glass-bg)] hover:bg-slate-100/80 dark:hover:bg-white/10 text-foreground"
             )}
           >
             <Grid2X2 className="h-4 w-4 text-orange-500" />
@@ -172,9 +172,9 @@ export function HeaderClient({
           {activeDropdown === "add-listing" && (
             <div
               role="menu"
-              className="absolute top-full right-0 mt-2 w-80 sm:w-88 glass-frosted backdrop-blur-[var(--blur-frosted)] bg-slate-900/90 dark:bg-slate-950/90 border border-white/20 dark:border-white/10 shadow-2xl rounded-2xl p-2.5 z-50 animate-in fade-in-0 zoom-in-95 duration-150"
+              className="absolute top-full right-0 mt-2 w-80 sm:w-88 rounded-2xl p-2.5 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-[var(--blur-frosted)] bg-white/92 dark:bg-slate-950/92 border border-black/10 dark:border-white/15 shadow-2xl shadow-slate-900/15 dark:shadow-black/70"
             >
-              <div className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white/60">
+              <div className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Create a New Listing
               </div>
               <div className="flex flex-col gap-1 mt-1">
@@ -187,16 +187,16 @@ export function HeaderClient({
                       prefetch={false}
                       role="menuitem"
                       onClick={closeDropdowns}
-                      className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-white/10 transition-all text-left w-full group"
+                      className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-slate-100/90 dark:hover:bg-white/10 transition-all text-left w-full group"
                     >
-                      <div className="h-10 w-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white group-hover:scale-105 transition-transform shrink-0">
+                      <div className="h-10 w-10 rounded-full bg-slate-100 dark:bg-white/10 border border-slate-200/90 dark:border-white/15 flex items-center justify-center text-slate-800 dark:text-white group-hover:scale-105 transition-transform shrink-0">
                         <Icon className="h-5 w-5" />
                       </div>
                       <div className="flex flex-col min-w-0">
-                        <span className="text-sm font-semibold text-white leading-snug group-hover:text-orange-400 transition-colors">
+                        <span className="text-sm font-semibold text-slate-900 dark:text-white leading-snug group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                           {opt.title}
                         </span>
-                        <span className="text-xs text-white/60 leading-tight truncate">
+                        <span className="text-xs text-slate-600 dark:text-slate-300 leading-tight truncate">
                           {opt.subtitle}
                         </span>
                       </div>
@@ -216,7 +216,7 @@ export function HeaderClient({
             aria-expanded={activeDropdown === "favourites"}
             aria-haspopup="true"
             aria-label="View favourites"
-            className="h-9 w-9 rounded-full flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-white/10 relative transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]"
+            className="h-9 w-9 rounded-full flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-slate-100/80 dark:hover:bg-white/10 relative transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]"
           >
             <Heart className="h-4 w-4 text-rose-500 fill-rose-500" />
             <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-background">
@@ -227,23 +227,23 @@ export function HeaderClient({
           {activeDropdown === "favourites" && (
             <div
               role="menu"
-              className="absolute top-full right-0 mt-2 w-72 glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-border)] shadow-[var(--glass-shadow-lg)] rounded-2xl p-3 z-50 animate-in fade-in-0 zoom-in-95 duration-150"
+              className="absolute top-full right-0 mt-2 w-72 rounded-2xl p-3 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-[var(--blur-frosted)] bg-white/92 dark:bg-slate-950/92 border border-black/10 dark:border-white/15 shadow-2xl shadow-slate-900/15 dark:shadow-black/70"
             >
-              <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10 mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Favourites
                 </span>
                 <span className="text-xs text-rose-500 font-semibold">1 saved</span>
               </div>
-              <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/10 transition-colors">
-                <div className="h-9 w-9 rounded-lg bg-orange-500/20 text-orange-500 flex items-center justify-center font-bold text-xs shrink-0">
+              <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100/90 dark:hover:bg-white/10 transition-colors">
+                <div className="h-9 w-9 rounded-lg bg-orange-500/15 text-orange-600 dark:text-orange-400 flex items-center justify-center font-bold text-xs shrink-0">
                   SB
                 </div>
                 <div className="flex flex-col min-w-0">
-                  <span className="text-sm font-semibold text-foreground truncate">
+                  <span className="text-sm font-semibold text-slate-900 dark:text-white truncate">
                     Sunset Bistro & Lounge
                   </span>
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-slate-600 dark:text-slate-300">
                     Food • Central Park
                   </span>
                 </div>
@@ -260,7 +260,7 @@ export function HeaderClient({
             aria-expanded={activeDropdown === "location"}
             aria-haspopup="true"
             aria-label="Change location"
-            className="h-9 w-9 rounded-full flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-white/10 text-muted-foreground hover:text-foreground relative transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]"
+            className="h-9 w-9 rounded-full flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-slate-100/80 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground relative transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]"
           >
             <MapPin className="h-4 w-4" />
           </button>
@@ -268,9 +268,9 @@ export function HeaderClient({
           {activeDropdown === "location" && (
             <div
               role="menu"
-              className="absolute top-full right-0 mt-2 w-64 glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-border)] shadow-[var(--glass-shadow-lg)] rounded-2xl p-2.5 z-50 animate-in fade-in-0 zoom-in-95 duration-150"
+              className="absolute top-full right-0 mt-2 w-64 rounded-2xl p-2.5 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-[var(--blur-frosted)] bg-white/92 dark:bg-slate-950/92 border border-black/10 dark:border-white/15 shadow-2xl shadow-slate-900/15 dark:shadow-black/70"
             >
-              <div className="px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <div className="px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Select City
               </div>
               <div className="flex flex-col gap-1 mt-1">
@@ -285,8 +285,8 @@ export function HeaderClient({
                     className={cn(
                       "flex items-center justify-between p-2 rounded-xl text-left text-sm transition-colors",
                       currentLocation === loc
-                        ? "bg-white/15 font-semibold text-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-white/10"
+                        ? "bg-slate-200/80 dark:bg-white/15 font-semibold text-slate-900 dark:text-white"
+                        : "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/90 dark:hover:bg-white/10"
                     )}
                   >
                     <span>{loc}</span>
@@ -308,7 +308,7 @@ export function HeaderClient({
             aria-expanded={activeDropdown === "notifications"}
             aria-haspopup="true"
             aria-label="View notifications"
-            className="h-9 w-9 rounded-full flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-white/10 text-muted-foreground hover:text-foreground relative transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]"
+            className="h-9 w-9 rounded-full flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-slate-100/80 dark:hover:bg-white/10 text-muted-foreground hover:text-foreground relative transition-all cursor-pointer shadow-[var(--glass-shadow-sm)]"
           >
             <Bell className="h-4 w-4" />
             <span className="absolute -top-1 -right-1 h-4 w-4 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-background">
@@ -319,32 +319,32 @@ export function HeaderClient({
           {activeDropdown === "notifications" && (
             <div
               role="menu"
-              className="absolute top-full right-0 mt-2 w-80 glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-border)] shadow-[var(--glass-shadow-lg)] rounded-2xl p-3 z-50 animate-in fade-in-0 zoom-in-95 duration-150"
+              className="absolute top-full right-0 mt-2 w-80 rounded-2xl p-3 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-[var(--blur-frosted)] bg-white/92 dark:bg-slate-950/92 border border-black/10 dark:border-white/15 shadow-2xl shadow-slate-900/15 dark:shadow-black/70"
             >
-              <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-white/10 mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   Notifications
                 </span>
                 <span className="text-xs text-orange-500 font-semibold">2 unread</span>
               </div>
               <div className="flex flex-col gap-2">
-                <div className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
-                  <p className="text-xs font-semibold text-foreground">
+                <div className="p-2.5 rounded-xl bg-slate-100/80 dark:bg-white/5 hover:bg-slate-200/80 dark:hover:bg-white/10 transition-colors">
+                  <p className="text-xs font-semibold text-slate-900 dark:text-white">
                     Listing Approved: Villa Serena
                   </p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5">
+                  <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
                     Your property listing is now live in Monaco.
                   </p>
-                  <span className="text-[10px] text-muted-foreground mt-1 inline-block">10m ago</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 inline-block">10m ago</span>
                 </div>
-                <div className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
-                  <p className="text-xs font-semibold text-foreground">
+                <div className="p-2.5 rounded-xl bg-slate-100/80 dark:bg-white/5 hover:bg-slate-200/80 dark:hover:bg-white/10 transition-colors">
+                  <p className="text-xs font-semibold text-slate-900 dark:text-white">
                     New inquiry on BMW M3
                   </p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5">
+                  <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
                     A buyer sent you a message regarding your vehicle.
                   </p>
-                  <span className="text-[10px] text-muted-foreground mt-1 inline-block">1h ago</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 inline-block">1h ago</span>
                 </div>
               </div>
             </div>
@@ -370,18 +370,18 @@ export function HeaderClient({
           {activeDropdown === "profile" && (
             <div
               role="menu"
-              className="absolute top-full right-0 mt-2 w-56 glass-frosted backdrop-blur-[var(--blur-frosted)] border border-[var(--glass-border)] shadow-[var(--glass-shadow-lg)] rounded-2xl p-2 z-50 animate-in fade-in-0 zoom-in-95 duration-150"
+              className="absolute top-full right-0 mt-2 w-56 rounded-2xl p-2 z-50 animate-in fade-in-0 zoom-in-95 duration-150 backdrop-blur-[var(--blur-frosted)] bg-white/92 dark:bg-slate-950/92 border border-black/10 dark:border-white/15 shadow-2xl shadow-slate-900/15 dark:shadow-black/70"
             >
-              <div className="px-3 py-2 border-b border-white/10 mb-1">
-                <p className="text-sm font-semibold text-foreground">Alex Morgan</p>
-                <p className="text-xs text-muted-foreground truncate">alex@findmy.local</p>
+              <div className="px-3 py-2 border-b border-slate-200 dark:border-white/10 mb-1">
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">Alex Morgan</p>
+                <p className="text-xs text-slate-600 dark:text-slate-300 truncate">alex@findmy.local</p>
               </div>
               <div className="flex flex-col gap-0.5">
                 <Link
                   href="#profile"
                   prefetch={false}
                   onClick={closeDropdowns}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-foreground hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100/90 dark:hover:bg-white/10 transition-colors"
                 >
                   <User className="h-3.5 w-3.5 text-muted-foreground" />
                   My Profile
@@ -390,7 +390,7 @@ export function HeaderClient({
                   href="#listings"
                   prefetch={false}
                   onClick={closeDropdowns}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-foreground hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100/90 dark:hover:bg-white/10 transition-colors"
                 >
                   <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
                   My Listings (4)
@@ -399,16 +399,16 @@ export function HeaderClient({
                   href="#settings"
                   prefetch={false}
                   onClick={closeDropdowns}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-foreground hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100/90 dark:hover:bg-white/10 transition-colors"
                 >
                   <Settings className="h-3.5 w-3.5 text-muted-foreground" />
                   Account Settings
                 </Link>
-                <div className="my-1 border-t border-white/10" />
+                <div className="my-1 border-t border-slate-200 dark:border-white/10" />
                 <button
                   type="button"
                   onClick={closeDropdowns}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-red-500 hover:bg-red-500/10 transition-colors w-full text-left"
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-500/10 transition-colors w-full text-left cursor-pointer"
                 >
                   <LogOut className="h-3.5 w-3.5" />
                   Sign Out
@@ -425,7 +425,7 @@ export function HeaderClient({
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden h-9 w-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-white/10"
+          className="lg:hidden h-9 w-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-slate-100/80 dark:hover:bg-white/10"
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-menu"
