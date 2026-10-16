@@ -1,0 +1,26 @@
+# Crenspire Glass UI - Complete Technical Specification
+
+> Comprehensive technical documentation for autonomous agents, crawlers, and AI-assisted workflows.
+
+## Architecture
+- **Framework**: Next.js 16 App Router (Turbopack, Server Components by default, React 19).
+- **Styling**: Tailwind CSS v4, PostCSS, CSS variables, OKLCH color spaces.
+- **Components**: Radix UI headless primitives wrapped with Apple liquid glass styling.
+- **Glass Variants**:
+  - `glass`: Base translucent acrylic with specular top border lighting and backdrop blur.
+  - `frosted`: Denser, soft light scattering blur with elevated opacity.
+  - `fluted`: Vertical striated glass effect with directional lighting.
+  - `crystal`: High-refraction, ultra-crisp edge highlights with high transparency.
+
+## Component Registry
+Available via `npx shadcn@latest add @glass-ui/<name>`:
+- Forms: Button, Input, Textarea, Label, Checkbox, Switch, RadioGroup, Select, ButtonGroup, InputGroup
+- Display: Card, Badge, Avatar, Alert, Skeleton, Separator, Table, Spinner, EmptyState
+- Overlays: Dialog, AlertDialog, Popover, Tooltip, HoverCard, Sheet, ContextMenu, Sonner (Toast)
+- Navigation: Tabs, Accordion, Breadcrumb, DropdownMenu, NavigationMenu, Pagination, ScrollArea, MenuBar
+- Interactive: Slider, Toggle, ToggleGroup, Carousel, ModeToggle
+
+## Performance & Accessibility Standards
+- Lighthouse 100/100 targets across Performance, Accessibility, Best Practices, and SEO.
+- Agentic Browsing: Full compliance with W3C HTML5 semantic landmarks (`<header>`, `<nav>`, `<main id="main-content">`, `<footer>`).
+- Zero forced reflows during hydration and compositor-only GPU transitions (`transform`, `opacity`).

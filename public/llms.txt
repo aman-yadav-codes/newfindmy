@@ -1,0 +1,25 @@
+# Crenspire Glass UI
+
+> A modern, glassmorphic component library inspired by Apple's design language, built with Next.js 16, React 19, Radix UI primitives, and Tailwind CSS v4.
+
+## Key Features & Capabilities
+- **Liquid Glass Aesthetic**: Translucent backdrop blur, specular border highlights, OKLCH tokens, ambient mesh gradients.
+- **4 Design Variants**: Glass, Frosted, Fluted, and Crystal styles across all primitives.
+- **50+ Accessible Primitives**: Built on Radix UI with full keyboard navigation and screen-reader accessibility.
+- **Interactive Micro-Effects**: Glow, shimmer, ripple, lift, and scale hover transitions.
+- **Zero Layout Shift (CLS = 0)**: Optimized dimensions, preloaded typography, and smooth transitions.
+
+## Available Actions & Workflows
+- [Documentation & Getting Started](/docs/getting-started): Quickstart and CLI installation guides.
+- [Component Registry & Catalog](/components): Interactive showcase and code snippets for 50+ glass components.
+- [Design Blocks & Templates](/blocks): Authentication forms, dashboards, metric cards, and dialogs.
+- [Themes & Customization](/themes): OKLCH color palettes and glass intensity controls.
+
+## Machine-Readable Data & API Endpoints
+- [Component Registry Index](/r/registry.json): JSON schema and exports of all available components.
+- [Sitemap](/sitemap.xml): Complete URL index.
+- [Robots Configuration](/robots.txt): Search engine and AI crawler rules.
+
+## Guidelines for Autonomous Agents
+- Interactive elements possess stable descriptive IDs and `aria-label` attributes.
+- Use the theme toggle button in the header (`aria-label="Toggle theme"`) to switch between light and dark modes.
