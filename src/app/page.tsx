@@ -42,13 +42,13 @@ export default function Home() {
 
             <div className="flex items-center justify-center gap-4 flex-wrap mb-12">
               <Button asChild size="lg" variant="glass">
-                <Link href="/docs/getting-started" className="gap-2 font-medium">
+                <Link href="#interactive" prefetch={false} className="gap-2 font-medium">
                   Get Started
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/components" className="font-medium">
+                <Link href="#showcase" prefetch={false} className="font-medium">
                   Browse Components
                 </Link>
               </Button>
@@ -59,7 +59,7 @@ export default function Home() {
         </section>
 
         {/* ───────────────── Component Showcase ───────────────── */}
-        <section className="container mx-auto px-4 pb-32" aria-labelledby="showcase-heading" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}>
+        <section id="showcase" className="container mx-auto px-4 pb-32" aria-labelledby="showcase-heading" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}>
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 id="showcase-heading" className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
               Components that speak for themselves
@@ -73,7 +73,7 @@ export default function Home() {
         </section>
 
         {/* ───────────────── Variants ───────────────── */}
-        <section className="container mx-auto px-4 pb-32" aria-labelledby="variants-heading">
+        <section id="variants" className="container mx-auto px-4 pb-32" aria-labelledby="variants-heading">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 id="variants-heading" className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
               Four distinct glass variants
@@ -87,7 +87,7 @@ export default function Home() {
         </section>
 
         {/* ───────────────── Interactive ───────────────── */}
-        <section className="container mx-auto px-4 pb-32" aria-labelledby="interactive-heading">
+        <section id="interactive" className="container mx-auto px-4 pb-32" aria-labelledby="interactive-heading">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 id="interactive-heading" className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
               Try it live
@@ -101,7 +101,7 @@ export default function Home() {
         </section>
 
         {/* ───────────────── Features ───────────────── */}
-        <section className="container mx-auto px-4 pb-32" aria-labelledby="features-heading">
+        <section id="features" className="container mx-auto px-4 pb-32" aria-labelledby="features-heading">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 id="features-heading" className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
               Why Liquid Glass?
@@ -157,13 +157,13 @@ export default function Home() {
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">
               <Button asChild size="lg" variant="glass">
-                <Link href="/docs/getting-started" className="gap-2 font-medium">
+                <Link href="#interactive" prefetch={false} className="gap-2 font-medium">
                   Read the Docs
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/components" className="font-medium">
+                <Link href="#showcase" prefetch={false} className="font-medium">
                   Browse Components
                 </Link>
               </Button>

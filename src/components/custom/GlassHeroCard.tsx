@@ -52,13 +52,13 @@ export function GlassHeroCard({
 
       <CardContent className="pt-8 flex flex-wrap items-center gap-4 relative z-10 p-0">
         <Button asChild variant="default" size="lg">
-          <Link href={ctaHref} className="gap-2 font-medium">
+          <Link href={ctaHref} prefetch={false} className="gap-2 font-medium">
             <span>{ctaText}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </Button>
         <Button asChild variant="glass" size="lg">
-          <Link href={secondaryHref} className="font-medium">
+          <Link href={secondaryHref} prefetch={false} className="font-medium">
             {secondaryText}
           </Link>
         </Button>

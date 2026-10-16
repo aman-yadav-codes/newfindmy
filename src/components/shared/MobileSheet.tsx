@@ -55,10 +55,11 @@ export function MobileSheet({ open, onOpenChange, navigation, starCount }: Mobil
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={false}
                 onClick={() => onOpenChange(false)}
                 className={cn(
                   "text-base font-medium transition-colors hover:text-foreground/80 py-2",
-                  pathname?.startsWith(item.href)
+                  !item.href.startsWith("#") && pathname?.startsWith(item.href)
                     ? "text-foreground"
                     : "text-muted-foreground"
                 )}
