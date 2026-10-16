@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Apply to frontend performance, hydration, code splitting, animations, Lighthouse, and mobile UI work.
+---
+
 # Performance Code-Splitting Architecture (TBT Zero Protocol)
 
 Mandatory rules derived from validated production optimizations on Glass UI.
@@ -28,7 +33,7 @@ All components that need to know if they are mounted (e.g., theme toggles, porta
 
 ```tsx
 const emptySubscribe = () => () => {}
-const mounted = React.useSyncExternalStore(emptySubscribe, () => true, () => false)
+const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false)
 ```
 
 ## 5. `optimizePackageImports` in next.config.ts
@@ -39,3 +44,10 @@ All UI library packages used in this project must be in `optimizePackageImports`
 - **Target scores**: Performance 100 (min 95), Accessibility 100, Best Practices 100, SEO 100, Agentic Browsing 3/3.
 - **TBT**: 0ms (threshold < 200ms).
 - **ESLint Zero-Warning Gate**: `npx eslint . --max-warnings 0` before every commit or completion.
+
+## 7. Imports and navigation
+
+- Use named runtime imports and `import type` for TypeScript-only symbols.
+- Use `next/link` for internal navigation and Next navigation hooks instead of reading `window.location` during render.
+- Keep animation timings coordinated, use transform and opacity when possible, honor reduced motion, and measure actual frame pacing before claiming a frame-rate target.
+- Add packages to `optimizePackageImports` only when supported by the installed Next.js version and justified by measured bundle impact.

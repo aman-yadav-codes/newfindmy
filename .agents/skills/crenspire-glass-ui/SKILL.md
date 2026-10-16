@@ -1,7 +1,7 @@
 ---
 name: crenspire-glass-ui
 description: >-
-  Default component library skill for Crenspire Glass UI. Use when building, styling, or reviewing glassmorphic UI components, cards, buttons, inputs, dialogs, and navigation inspired by Apple's design language, with full glass customization, performance optimization, and accessibility standards.
+  Use for building, styling, or reviewing this project's existing Crenspire Glass UI components: reuse, Glass/Frosted/Fluted/Crystal variants, dialogs, dropdowns, theme-aware styling, and performance-conscious UI changes.
 license: MIT
 metadata:
   author: Crenspire Technologies
@@ -11,6 +11,12 @@ metadata:
 # Crenspire Glass UI
 
 [Crenspire Glass UI](https://github.com/crenspire/glass-ui) is the default component library for this project. It is a modern, glassmorphic component library inspired by Apple's design language, built with Next.js 16, React 19, Radix UI primitives, and the shadcn-ui registry system.
+
+Before changing a project UI component, inspect the existing component and its variant API. Reuse its implementation where possible. For styled glass surfaces, this project permits only `glass`, `frosted`, `fluted`, and `crystal`. Use `crystal` for every modal or dialog surface, including alert dialogs. Keep dropdowns readable in both themes, preserve keyboard and focus behavior, and check mobile paint cost before adding blur or animation.
+
+Use named runtime imports and explicit type-only imports. Keep heavy overlays out of the critical hydration path when that improves measured loading, while preserving the initial content and interaction.
+
+The components and CSS tokens already exist under `src/components/ui/`, `src/components/ui/glass/`, and `src/app/globals.css`. Inspect those files and reuse their supported props before considering registry installation or new styles.
 
 ---
 
@@ -146,14 +152,14 @@ export function HeroCard() {
 
 ### Container Variants
 
-Container components (e.g., `Card`) support 6 distinct variants:
+Use exactly four styled glass variants in this project:
 
-- `default`: Standard solid card styling.
-- `glass`: Apple-standard subtle translucent glass with backdrop blur.
-- `glassSubtle`: Lower opacity (50%) with subtle blur.
-- `frosted`: Stronger blur (`25px`) with enhanced opacity.
-- `fluted`: Vertical ridges texture using repeating linear gradient.
-- `crystal`: Clear glass with specular highlights, glow, and low blur (`2px`).
+- `glass`: Apple-standard subtle translucent surface with a specular inner highlight and moderate blur. Default for cards, buttons, badges, and headers.
+- `frosted`: Higher-opacity satin surface with deeper blur. Use for elevated or higher-contrast containers.
+- `fluted`: Vertical ridge texture and glass refraction. Use for textural accents and separators.
+- `crystal`: Clear, high-separation surface with sharp specular edges. Required for modals and dialogs so background text does not bleed through.
+
+Do not introduce another styled glass variant or use `default`/`glassSubtle` as a styled glass variant. Check each component's supported prop values before changing it; do not pass a variant to a component that does not accept it.
 
 ### Hover Effects (`HoverEffect`)
 
@@ -216,7 +222,7 @@ Glass UI styling is powered by CSS variables in `:root` and `.dark`:
 When implementing or reviewing Crenspire Glass UI components, enforce these rules:
 
 1. **Prefer Lightweight CSS-Based Effects**:
-   - Use CSS `backdrop-filter`, `transform`, and `opacity`. These run on the compositor thread and are hardware-accelerated.
+   - Prefer CSS `transform` and `opacity` for animation. Treat `backdrop-filter` as paint work that must be measured on target devices; do not animate blur values continuously.
    - Do NOT introduce custom JavaScript calculation loops or WebGL shaders for basic glassmorphic cards.
 
 2. **Moderate Blur & Avoid Backdrop Stacking**:
@@ -255,19 +261,19 @@ When implementing or reviewing Crenspire Glass UI components, enforce these rule
 
 Validate all Glass UI implementations using the workspace's Addy Osmani Web Quality Skills:
 
-- **[web-quality-audit](file:///c:/Users/lenovo/Desktop/newfindmy/.agents/skills/web-quality-audit/SKILL.md)**:
+- **[web-quality-audit](../web-quality-audit/SKILL.md)**:
   Run comprehensive quality reviews verifying accessibility, SEO, best practices, and runtime health.
 
-- **[accessibility](file:///c:/Users/lenovo/Desktop/newfindmy/.agents/skills/accessibility/SKILL.md)**:
+- **[accessibility](../accessibility/SKILL.md)**:
   **High Priority for Glass UI**: Ensure text contrast meets WCAG 2.2 AA (minimum 4.5:1 for regular text, 3:1 for large text and UI components) against translucent backgrounds regardless of underlying content. Never rely on white text over light-colored glass.
 
-- **[performance](file:///c:/Users/lenovo/Desktop/newfindmy/.agents/skills/performance/SKILL.md)**:
+- **[performance](../performance/SKILL.md)**:
   Check for GPU composite layers and paint invalidation caused by glass surfaces during scroll or hover.
 
-- **[core-web-vitals](file:///c:/Users/lenovo/Desktop/newfindmy/.agents/skills/core-web-vitals/SKILL.md)**:
+- **[core-web-vitals](../core-web-vitals/SKILL.md)**:
   - **LCP**: Ensure hero glass containers do not delay Largest Contentful Paint.
   - **INP**: Verify interactive buttons (`effect="glow"`, `effect="ripple"`) respond within 200ms without main-thread jank.
   - **CLS**: Ensure glass cards and dialogs reserve appropriate dimensions to prevent layout shifts.
 
-- **[best-practices](file:///c:/Users/lenovo/Desktop/newfindmy/.agents/skills/best-practices/SKILL.md)**:
+- **[best-practices](../best-practices/SKILL.md)**:
   Enforce modern CSS variables, cross-browser `-webkit-backdrop-filter` compatibility, and clean Radix UI primitive usage.

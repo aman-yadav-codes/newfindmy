@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Apply to web page changes and audits involving accessibility, SEO, Lighthouse, web quality, or agentic browsing.
+---
+
 # Universal Web Perfection Standard (The 100% Bar)
 
 Whenever writing, auditing, or refactoring code in this repository, every AI agent must strictly enforce the **100% Perfection Standard**:

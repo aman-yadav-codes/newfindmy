@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Apply when changing Next.js routes, RBAC, authenticated pages, Server Components, SSR, data fetching, APIs, caching, or rendering strategy.
+---
+
 # Rendering Strategy, SSR and API Latency Optimization
 
 Use the optimal Next.js 16 App Router rendering strategy for every route and component. The objective is fast initial rendering, minimal client-side JavaScript, low data-fetching latency, and correct, fresh data.
@@ -49,3 +54,21 @@ Retain Route Handlers for external API consumers, webhooks, integrations, client
 - Keep `"use client"` boundaries narrow.
 - Avoid refetching data immediately after hydration when the server already supplied an equivalent result.
 - Avoid unnecessary hydration, large serialized payloads, and duplicated client/server state.
+
+### F. Select and Verify Per Route
+
+For important routes, document static, dynamic, or streamed rendering; server and client data sources; independent requests; cache lifetime and invalidation; and any dependency blocking the initial response. Measure TTFB, LCP, JavaScript, data latency, hydration, and cache behavior where possible. Compare equivalent before and after conditions. SSR alone is not evidence of a speedup, and user-specific data must never be cached publicly.
+
+### G. Authenticated and RBAC Features When Introduced
+
+- Centralize session verification and permission checks in a server-only data access boundary for each protected resource. Deny by default and scope reads and writes to the current user or tenant.
+- Recheck authorization for every Server Action and Route Handler mutation and for protected data reads. Hiding a button or checking a layout or Proxy alone is insufficient.
+- Return only authorized fields to pages and Client Components. Keep secrets, session internals, and private data out of serialized props, logs, and shared caches.
+- Separate authentication (identity), authorization (permission), and presentation. Choose an established auth solution when requirements are known; do not invent roles, tables, or providers in advance.
+- Keep public data static or safely cached when possible. Render request-specific content dynamically, and push slow session-dependent work below the shared shell when streaming can preserve a fast initial response.
+
+### H. API and Concurrent-User Readiness
+
+- Add a Route Handler only for an actual HTTP contract. Validate input, authenticate and authorize protected operations, return bounded responses, and handle errors consistently at that boundary.
+- Bound list queries with pagination or limits. Measure query cost and add indexes for observed access patterns. Use connection pooling and rate limits when the chosen data store and exposed endpoint require them.
+- Keep request handlers stateless where possible and avoid unbounded per-request work. Test representative concurrent traffic against the production build and deployment before claiming capacity for hundreds of users.

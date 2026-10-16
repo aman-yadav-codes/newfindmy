@@ -36,7 +36,7 @@ const DialogContent = React.forwardRef<
     variant?: "default" | "glass" | "glassSubtle" | "frosted" | "fluted" | "crystal"
     glass?: GlassCustomization
   }
->(({ className, variant = "glass", children, glass, style, ...props }, ref) => {
+>(({ className, variant = "crystal", children, glass, style, ...props }, ref) => {
   const hasCustomGlass = glass !== undefined
   
   const getVariantClass = () => {
@@ -50,7 +50,7 @@ const DialogContent = React.forwardRef<
       fluted: "glass-fluted backdrop-blur-[var(--blur)] border border-[var(--glass-border)] text-foreground shadow-[var(--glass-shadow-lg)]",
       crystal: "glass-crystal backdrop-blur-[var(--blur-crystal)] border border-[var(--glass-crystal-border)] text-foreground shadow-[var(--glass-crystal-shadow)]",
     }
-    return variants[variant] || variants.glass
+    return variants[variant] || variants.crystal
   }
   
   const glassStyles = variant !== "default" ? getGlassStyles(glass) : {}

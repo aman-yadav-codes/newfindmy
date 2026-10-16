@@ -1,9 +1,14 @@
+---
+trigger: always_on
+description: Shared session protocol for reading applicable project rules and skills before changes.
+---
+
 # Mandatory Session Initialization Protocol
 
-> **CRITICAL DIRECTIVE**: At the start of every session, before writing any code, refactoring components, or responding to user requests, the AI Agent must execute this protocol.
+Read the root `AGENTS.md` entry point, then open the rule and skill files relevant to the task before changing code. Do not load every lengthy skill on unrelated tasks.
 
-## Step 1: Discover & Read Required Skills via `view_file`
-The project maintains project-specific skills inside `.agents/skills/`. You MUST read the `SKILL.md` file of relevant skills before starting:
+## Step 1: Discover & Read Applicable Skills
+The project maintains project-specific skills inside `.agents/skills/`. Read the full `SKILL.md` for each relevant skill before implementation:
 - **Liquid Glass & UI Components**: Read `.agents/skills/crenspire-glass-ui/SKILL.md`
 - **Performance & TBT 0ms**: Read `.agents/skills/high-performance-ui/SKILL.md` and `.agents/skills/performance/SKILL.md`
 - **Lighthouse 100/100 Standards**: Read `.agents/skills/web-perfection-100/SKILL.md`
@@ -22,4 +27,4 @@ The project maintains project-specific skills inside `.agents/skills/`. You MUST
    - Never use `useEffect(() => setMounted(true), [])`. Always use `useSyncExternalStore`.
 4. **Validation Gate**:
    - Zero ESLint warnings: `npx eslint . --max-warnings 0`
-   - Build passes: `npm run build`
+   - For code changes, run the relevant build and report its actual result.

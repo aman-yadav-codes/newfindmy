@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { forwardRef, type ComponentProps, type ElementRef } from "react"
 import {
   Dialog as BaseDialog,
   DialogContent as BaseDialogContent,
@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils"
 import type { GlassCustomization } from "@/lib/glass-utils"
 import { hoverEffects, type HoverEffect } from "@/lib/hover-effects"
 
-export interface DialogContentProps extends Omit<React.ComponentProps<typeof BaseDialogContent>, "glass"> {
+export interface DialogContentProps extends Omit<ComponentProps<typeof BaseDialogContent>, "glass"> {
   variant?: "default" | "glass" | "glassSubtle" | "frosted" | "fluted" | "crystal"
   animated?: boolean
   hover?: HoverEffect
@@ -38,10 +38,10 @@ export interface DialogContentProps extends Omit<React.ComponentProps<typeof Bas
  * </DialogContent>
  * ```
  */
-export const DialogContent = React.forwardRef<
-  React.ElementRef<typeof BaseDialogContent>,
+export const DialogContent = forwardRef<
+  ElementRef<typeof BaseDialogContent>,
   DialogContentProps
->(({ className, variant = "glass", animated = true, hover = "none", glass, children, ...props }, ref) => {
+>(({ className, variant = "crystal", animated = true, hover = "none", glass, children, ...props }, ref) => {
   return (
     <BaseDialogContent
       ref={ref}
@@ -49,7 +49,7 @@ export const DialogContent = React.forwardRef<
       glass={glass}
       className={cn(
         "overflow-hidden",
-        animated && "backdrop-blur-[var(--blur-lg)]",
+        animated && "backdrop-blur-[var(--blur-crystal)]",
         hoverEffects({ hover }),
         className
       )}

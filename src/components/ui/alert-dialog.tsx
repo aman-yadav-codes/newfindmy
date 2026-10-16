@@ -32,7 +32,7 @@ const AlertDialogContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content> & {
     variant?: "default" | "glass" | "glassSubtle" | "frosted" | "fluted" | "crystal"
   }
->(({ className, variant = "glass", ...props }, ref) => {
+>(({ className, variant = "crystal", ...props }, ref) => {
   const getVariantClass = () => {
     if (variant === "default") return "bg-background border"
     
@@ -43,7 +43,7 @@ const AlertDialogContent = React.forwardRef<
       fluted: "glass-fluted backdrop-blur-[var(--blur)] border border-[var(--glass-border)] text-foreground shadow-[var(--glass-shadow-lg)]",
       crystal: "glass-crystal backdrop-blur-[var(--blur-crystal)] border border-[var(--glass-crystal-border)] text-foreground shadow-[var(--glass-crystal-shadow)]",
     }
-    return variants[variant] || variants.glass
+    return variants[variant] || variants.crystal
   }
   
   return (

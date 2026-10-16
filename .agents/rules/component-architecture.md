@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Apply when organizing new features or creating, moving, styling, or refactoring shared, custom, feature, or Glass UI components.
+---
+
 # Custom and Shared Component Architecture
 
 Create a dedicated structure for project-owned components that need customization beyond the default Crenspire Glass UI library.
@@ -37,3 +42,11 @@ src/
 - Avoid duplicated business logic, oversized prop interfaces, deeply nested conditionals, and excessive component fragmentation.
 - Maintain backward compatibility when refactoring existing components.
 - Update imports and tests when moving or extracting components.
+
+### Feature Organization as the Product Grows
+
+- Keep `src/app/` responsible for routes, layouts, metadata, and HTTP entry points. Put business rules and data access in server-only modules close to the feature that owns them; do not bury them in page or component files.
+- Co-locate a feature's UI, server-side operations, validation, and types under `src/features/<feature>/` when the feature actually needs them. Move code to `components/shared/` or `src/lib/` only after it is reused across features.
+- Import server-only code only into Server Components, Server Actions, or Route Handlers. Pass Client Components the minimum serializable, authorized data they need.
+- Keep boundaries explicit and dependency direction simple: route → feature service/data access → external service or database. Avoid route-to-route HTTP calls and circular feature imports.
+- Add folders, interfaces, services, and abstractions when a real feature needs them. Do not scaffold RBAC, repositories, API layers, or configuration for hypothetical future use.

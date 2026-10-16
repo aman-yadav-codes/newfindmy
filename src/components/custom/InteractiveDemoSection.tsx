@@ -24,20 +24,20 @@ export function InteractiveDemoSection() {
               <div className="text-xs text-muted-foreground mt-1">Glass modal overlay</div>
             </button>
           </DialogTrigger>
-          <DialogContent variant="default" animated={false} className="max-w-md glass-dialog-panel border-[var(--glass-frosted-border)] text-foreground shadow-[var(--glass-frosted-shadow)]">
+          <DialogContent variant="crystal" className="max-w-md">
             <DialogHeader>
-              <DialogTitle>Glass Dialog</DialogTitle>
+              <DialogTitle>Crystal Dialog</DialogTitle>
               <DialogDescription>
-                A frosted glass modal with form controls inside.
+                A crystal glass modal with form controls and background separation.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
-              <Input variant="glass" placeholder="Your name" aria-label="Your full name" />
+              <Input variant="crystal" placeholder="Your name" aria-label="Your full name" />
               <Select>
-                <SelectTrigger variant="glass" aria-label="Pick an option from the dropdown">
+                <SelectTrigger variant="crystal" aria-label="Pick an option from the dropdown">
                   <SelectValue placeholder="Pick an option" />
                 </SelectTrigger>
-                <SelectContent variant="glass">
+                <SelectContent variant="crystal">
                   <SelectItem value="a">Option A</SelectItem>
                   <SelectItem value="b">Option B</SelectItem>
                   <SelectItem value="c">Option C</SelectItem>
@@ -48,7 +48,7 @@ export function InteractiveDemoSection() {
                   <Button variant="outline">Cancel</Button>
                 </DialogClose>
                 <DialogClose asChild>
-                  <Button variant="glass">Confirm</Button>
+                  <Button variant="crystal">Confirm</Button>
                 </DialogClose>
               </div>
             </div>
