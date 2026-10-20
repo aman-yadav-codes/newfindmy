@@ -82,6 +82,9 @@ export { PaginationContent, Pagination, PaginationItem, PaginationLink, Paginati
 export type { PaginationContentProps } from "./pagination"
 
 // Layout Components
+export { DrawerContent, Drawer, DrawerPortal, DrawerOverlay, DrawerTrigger, DrawerClose, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription } from "./drawer"
+export type { DrawerContentProps } from "./drawer"
+
 export { SheetContent, Sheet, SheetPortal, SheetOverlay, SheetTrigger, SheetClose, SheetHeader, SheetFooter, SheetTitle, SheetDescription } from "./sheet"
 export type { SheetContentProps } from "./sheet"
 

@@ -1,9 +1,16 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { ChevronDown, MapPin, Search, Sparkles } from "lucide-react";
+import { MapPin, Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/glass/button";
 import { Input } from "@/components/ui/glass/input";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/glass/select";
 
 const suggestions = [
   { label: "I'm craving Italian", icon: "🍽️" },
@@ -45,7 +52,7 @@ export function HeroSearch() {
     <div className="mt-7 max-w-[720px]">
       <form role="search" onSubmit={handleSubmit}>
         <div className="relative">
-          <Sparkles aria-hidden="true" className="pointer-events-none absolute left-5 top-1/2 z-10 size-5 -translate-y-1/2 text-amber-300" />
+          <Sparkles aria-hidden="true" className="pointer-events-none absolute left-4 sm:left-5 top-1/2 z-10 size-4 sm:size-5 -translate-y-1/2 text-amber-300" />
           <Input
             ref={inputRef}
             id="hero-search"
@@ -56,7 +63,7 @@ export function HeroSearch() {
             onChange={(event) => setQuery(event.target.value)}
             placeholder="What are you looking for today?"
             aria-label="Search local categories"
-            className="h-[72px] w-full rounded-full border-white/45 bg-white/20 pl-12 pr-16 text-sm font-medium text-white shadow-xl placeholder:text-white/80 focus-visible:scale-100 focus-visible:ring-2 focus-visible:ring-amber-300 sm:pl-14 sm:pr-20 sm:text-base"
+            className="h-14 sm:h-[72px] w-full rounded-full border-white/45 bg-white/20 pl-11 pr-14 sm:pl-14 sm:pr-20 text-xs sm:text-base font-medium text-white shadow-xl placeholder:text-white/80 focus-visible:scale-100 focus-visible:ring-2 focus-visible:ring-amber-300"
           />
           <Button
             type="submit"
@@ -64,27 +71,31 @@ export function HeroSearch() {
             effect="none"
             size="icon"
             aria-label="Search"
-            className="absolute right-3 top-1/2 z-10 size-12 -translate-y-1/2 rounded-full border border-white/20 bg-slate-950/90 text-white shadow-lg hover:bg-slate-900"
+            className="absolute right-2 sm:right-3 top-1/2 z-10 size-10 sm:size-12 -translate-y-1/2 rounded-full border border-white/20 bg-slate-950/90 text-white shadow-lg hover:bg-slate-900"
           >
-            <Search aria-hidden="true" className="size-5" />
+            <Search aria-hidden="true" className="size-4 sm:size-5" />
           </Button>
         </div>
       </form>
 
-      <div className="mt-4 flex items-center gap-2 text-sm font-medium text-white">
-        <MapPin aria-hidden="true" className="size-4 shrink-0 text-amber-300" />
+      <div className="mt-3.5 sm:mt-4 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-white">
+        <MapPin aria-hidden="true" className="size-3.5 sm:size-4 shrink-0 text-amber-300" />
         <label htmlFor="hero-location" className="shrink-0">Using your location:</label>
-        <span className="relative inline-flex items-center">
-          <select
+        <Select value={city} onValueChange={(val) => setCity(val)}>
+          <SelectTrigger
             id="hero-location"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-            className="max-w-36 appearance-none rounded-sm border-0 bg-transparent py-1 pr-5 font-bold text-white underline decoration-white/60 underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-amber-300 [&>option]:text-slate-950"
+            className="w-auto border border-white/20 bg-white/10 hover:bg-white/15 text-white h-7 px-2.5 py-0.5 rounded-lg text-xs sm:text-sm font-bold shadow-none focus:ring-1 focus:ring-amber-300"
           >
-            {cities.map((item) => <option key={item} value={item}>{item}</option>)}
-          </select>
-          <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-0 size-3.5 text-white/90" />
-        </span>
+            <SelectValue placeholder="Location" />
+          </SelectTrigger>
+          <SelectContent className="min-w-[150px]">
+            {cities.map((item) => (
+              <SelectItem key={item} value={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-1.5 text-xs text-white">

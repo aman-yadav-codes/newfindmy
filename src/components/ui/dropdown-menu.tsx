@@ -79,7 +79,7 @@ const DropdownMenuContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & {
     variant?: "default" | "glass" | "glassSubtle" | "frosted" | "fluted" | "crystal"
   }
->(({ className, sideOffset = 4, variant = "glass", ...props }, ref) => {
+>(({ className, sideOffset = 4, collisionPadding = 12, variant = "glass", ...props }, ref) => {
   const getVariantClass = () => {
     if (variant === "default") return "bg-popover text-popover-foreground border"
     
@@ -98,6 +98,7 @@ const DropdownMenuContent = React.forwardRef<
       <DropdownMenuPrimitive.Content
         ref={ref}
         sideOffset={sideOffset}
+        collisionPadding={collisionPadding}
         className={cn(
           "z-50 min-w-[8rem] overflow-hidden rounded-md p-1 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           getVariantClass(),

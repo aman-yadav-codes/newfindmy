@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-toggle-group",
       "sonner",
       "class-variance-authority",
+      "zustand",
     ],
   },
   images: {

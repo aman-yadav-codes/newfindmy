@@ -43,13 +43,13 @@ SelectTrigger.displayName = "SelectTrigger"
 export const SelectContent = React.forwardRef<
   React.ElementRef<typeof BaseSelectContent>,
   SelectContentProps
->(({ className, variant = "glass", glow = false, ...props }, ref) => {
+>(({ className, variant = "crystal", glow = false, ...props }, ref) => {
   return (
     <BaseSelectContent
       ref={ref}
       variant={variant}
       className={cn(
-        glow && "shadow-lg shadow-purple-500/30",
+        glow && "shadow-lg shadow-orange-500/20",
         className
       )}
       {...props}

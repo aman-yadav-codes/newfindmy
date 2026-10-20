@@ -34,6 +34,8 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 active:bg-accent/80 dark:active:bg-accent/60 active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]",
         link: "text-primary underline-offset-4 hover:underline active:opacity-80",
+        orange:
+          "bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium shadow-md shadow-orange-500/30 hover:shadow-lg hover:shadow-orange-500/40 border border-orange-400/30 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none disabled:shadow-none focus-visible:ring-2 focus-visible:ring-orange-500",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
