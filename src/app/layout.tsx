@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/shared/Header";
-import { Footer } from "@/components/shared/Footer";
 import { AuroraBackground } from "@/components/shared/AuroraBackground";
 import "./globals.css";
 
@@ -69,9 +67,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuroraBackground />
-          <Header />
-          <main id="main-content" className="flex-1">{children}</main>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>

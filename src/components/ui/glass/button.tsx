@@ -13,32 +13,25 @@ export interface ButtonProps
 /**
  * Glass UI Button - A beautifully designed button component with glassy effects
  * Built on top of the base Button component with enhanced visual effects
- * 
- * @example
- * ```tsx
- * <Button 
- *   glass={{
- *     color: "rgba(59, 130, 246, 0.2)",
- *     blur: 25,
- *     outline: "rgba(59, 130, 246, 0.4)"
- *   }}
- * >
- *   Click me
- * </Button>
- * ```
  */
 export const Button = React.forwardRef<
   HTMLButtonElement,
   ButtonProps
->(({ className, effect = "glow", variant = "glass", glass, ...props }, ref) => {
+>(({ className, effect, variant, glass, ...props }, ref) => {
+  // If className has custom orange/solid background and no variant is specified, resolve to "orange" or "default"
+  // so that .glass-bg { background-color: transparent } does not override the button styling.
+  const isOrangeBg = className && (className.includes("bg-orange") || className.includes("from-orange") || className.includes("bg-amber"));
+  const resolvedVariant = variant || (isOrangeBg ? "orange" : "glass");
+  const resolvedEffect = effect || (isOrangeBg ? "none" : (variant === "glass" || !variant ? "glow" : "none"));
+
   return (
     <BaseButton
       ref={ref}
-      variant={variant}
+      variant={resolvedVariant}
       glass={glass}
       className={cn(
         "relative overflow-hidden",
-        hoverEffects({ hover: effect }),
+        resolvedEffect !== "none" && hoverEffects({ hover: resolvedEffect }),
         className
       )}
       {...props}
@@ -46,4 +39,3 @@ export const Button = React.forwardRef<
   )
 })
 Button.displayName = "Button"
-

@@ -41,7 +41,7 @@ export function MobileSheet({
         id="mobile-menu"
         variant="glass"
         side="right"
-        className="w-[320px] sm:w-[380px] p-6 overflow-y-auto"
+        className="w-full max-w-[320px] sm:max-w-[380px] p-4 sm:p-6 overflow-y-auto"
       >
         <div className="flex flex-col gap-6 mt-4">
           {/* ───────────────── FindMy Brand ───────────────── */}
